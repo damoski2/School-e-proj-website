@@ -238,6 +238,12 @@ footer{
     top: 3em;
     margin-left: 4em;
     left: 0em;
+    background: #9a9e9d;
+}
+
+.reviews .innerReview{
+    padding-bottom: 2em;
+    padding-left: 2em;
 }
 
 .reviews label{
@@ -272,15 +278,26 @@ footer{
     margin-top: 3em;
 }
 
+#reviewed div{
+    display: block;
+    position: relative;
+    top: -4em;
+    left: 5.2em;
+}
+
 #reviewed li{
     list-style: none;
     margin-left: 2em;
-    margin-bottom: 2em;
+    margin-bottom: 0em;
+}
+
+#reviewed h1{
+    font-size: 25px;
 }
 
 #reviewed img{
-    height: 10%;
-    width: 10%;
+    height: 5%;
+    width: 5%;
 }
 
 /*submit service div*/

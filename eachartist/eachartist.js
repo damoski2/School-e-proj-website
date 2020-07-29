@@ -246,6 +246,8 @@ function errorHandler(transaction,error){
 
 /*Comment section functionality using Asyn js */
 var review = document.querySelector("#reviewed");
+var sendreview = document.querySelector("#sendreview");
+var cmtInp = document.getElementById("comment");
 var comments = [
     {user:'seaGirl_2',comment:'Very good services',image:'pageimages/user.png'},
     {user:'fashionstar',comment:'the best place to get your shit running',image:'pageimages/user.png'}
@@ -255,14 +257,32 @@ function postComment(){
     setTimeout(()=>{
         let output='';
         comments.forEach((review,index)=>{
-            output += `<img src=${review.image}></img><h1>${review.user}</h1> <li>${review.comment}</li>`
+            output += `<img src=${review.image}></img><div><h1>${review.user}</h1> <li>${review.comment}</li></div>`
         });
         review.innerHTML= output;
+        //Setting up loacl storage for the comment to be displayed each time the page refreshes
+        
 
 
     },1000)
 }
 
-postComment();
+sendreview.addEventListener('click',PostoComment)
 
- 
+
+
+function PostoComment(e){
+    e.preventDefault()
+    let cmtValue = cmtInp.value;
+    return new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+            comments.push({user:'user',comment:cmtValue,image:'pageimages/user.png'});
+            const error=false;
+            if(!error){
+                resolve();
+            }else{
+                reject('Error:in posting comment');
+            }
+        },2000)
+    }).then(postComment).catch(err=>{console.log(err)});
+} 
