@@ -130,9 +130,13 @@ for(let i=0; i<artist.length; i++){
         break;
     }
 }
-  var markarr =[{coords:{lat:6.9980,lng:-3.4737},content:`<h2>Meeting location: 23,adegbyin str,off Carson estate,Ibafo</h2>`}]
+  
 
 /*Google map geolocation*/
+var artistmarker = [`<h2>32,joy road, opposite snr pastors lodge,Redeem Camp</h2>`,]
+var markarr =[{coords:{lat:6.9980,lng:-3.4737},content:`<h2>Meeting location: 23,adegbyin str,off Carson estate,Ibafo</h2>`}]
+
+
 
 function initMap(){
     var options = {
