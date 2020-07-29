@@ -66,6 +66,9 @@ Artist.prototype.eachArtist = function(){
         var demo = document.createElement("p");
         demo.setAttribute("id","demosession");
         demo.textContent="Sorry no demosession available";
+        demo.style.position="absolute";
+        demo.style.top="29em";
+        demo.style.left="10em";
         contain.append(demo);
     }
 
@@ -238,5 +241,28 @@ function errorHandler(transaction,error){
     alert('Oops . Error  was '+error.message+ ' (Code'+error.code+')');
     return true;
 }
+
+
+
+/*Comment section functionality using Asyn js */
+var review = document.querySelector("#reviewed");
+var comments = [
+    {user:'seaGirl_2',comment:'Very good services',image:'pageimages/user.png'},
+    {user:'fashionstar',comment:'the best place to get your shit running',image:'pageimages/user.png'}
+];
+
+function postComment(){
+    setTimeout(()=>{
+        let output='';
+        comments.forEach((review,index)=>{
+            output += `<img src=${review.images}></img><h1>${review.user}</h1> <li>${review.comment}</li>`
+        });
+        review.innerHTML= output;
+
+
+    },1000)
+}
+
+postComment();
 
  
