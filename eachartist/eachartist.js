@@ -255,7 +255,7 @@ function postComment(){
     setTimeout(()=>{
         let output='';
         comments.forEach((review,index)=>{
-            output += `<img src=${review.images}></img><h1>${review.user}</h1> <li>${review.comment}</li>`
+            output += `<img src=${review.image}></img><h1>${review.user}</h1> <li>${review.comment}</li>`
         });
         review.innerHTML= output;
 

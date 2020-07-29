@@ -72,6 +72,11 @@ body{
     top: 15em;
     left: 7em;
     font-size: 19px;
+    width: 600px;
+}
+
+#listpara{
+
 }
 
 /*form*/
@@ -262,6 +267,22 @@ footer{
 .reviews form input[type=text]:focus{
     outline: none;
 }
+/*reviewed comment section*/
+#reviewed{
+    margin-top: 3em;
+}
+
+#reviewed li{
+    list-style: none;
+    margin-left: 2em;
+    margin-bottom: 2em;
+}
+
+#reviewed img{
+    height: 10%;
+    width: 10%;
+}
+
 /*submit service div*/
 .servicediv{
     background-color: #fff;
