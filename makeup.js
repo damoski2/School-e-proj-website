@@ -37,7 +37,7 @@ var art =[
      span.innerHTML= `<i class="fa fa-angle-double-right"  aria-hidden="true"></i>`;
      link.append(span);
      contain.append(profile);
-    // contain.append(info);
+     contain.append(info);
      contain.append(detail);
      contain.append(link);
      listNode.append(contain);  
