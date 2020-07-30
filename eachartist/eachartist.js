@@ -30,6 +30,7 @@ Artist.prototype.eachArtist = function(){
     var head = document.createElement("h1");
     head.textContent=this.name;
     var info = document.createElement("p");
+    info.className="headingpara";
     info.textContent=this.description;
     submit.addEventListener('submit', submitform);
 
@@ -199,12 +200,12 @@ $(document).ready(function(){
             db = openDatabase(shortName, version, displayName, maxSize);
             db.transaction(
             function(transaction) {
-            transaction.executeSql(
-            'CREATE TABLE IF NOT EXISTS interact ' +
-            ' (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, ' +
-            ' recipent CHAR NOT NULL, ' +
-            ' message CHAR NOT NULL);'
-            );
+                transaction.executeSql(
+                    'CREATE TABLE IF NOT EXISTS interact ' +
+                    ' (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, ' +
+                    ' recipent CHAR NOT NULL, ' +
+                    ' message CHAR NOT NULL);'
+                );
             }
             );
 
@@ -218,8 +219,9 @@ $(document).ready(function(){
                 function(transaction){
                     transaction.executeSql(
                         'CREATE TABLE IF NOT EXISTS review'+
-                        '(id INT AUTOINCREMENT NOT NULL PRIMARY KEY, '+
-                        'comment CHAR NOT NULL);'
+                        '(id INTEGER AUTOINCREMENT NOT NULL PRIMARY KEY, '+
+                        'comment CHAR NOT NULL,'+
+                        'template CHAR NOT NULL);'
                     );
                 }
             );  
@@ -257,19 +259,25 @@ $(document).ready(function(){
     return false;
    }
 
+   //Clear localStorage
+   localStorage.clear();
+
 
  function commentDatabase(){
-    let comment = $("#comment").val();
+    var comment = $("#comment").val();
+    var template = 'template';
     db.transaction(
         function(transaction){
             transaction.executeSql(
-                'INSERT INTO review (comment) VALUES(?);',
-                [comment]
+                'INSERT INTO review (comment,template) VALUES (?,?);',
+                [comment,template],
+                errorHandler
             );
-        },
+        }
     );
     return false;
 }
+
 function errorHandler(transaction,error){
     alert('Oops . Error  was '+error.message+ ' (Code'+error.code+')');
     return true;
@@ -289,13 +297,15 @@ function postComment(){
     setTimeout(()=>{
         let output='';
         comments.forEach((review,index)=>{
-            output += `<img src=${review.image}></img><div><h1>${review.user}</h1> <li>${review.comment}</li></div>`
+            localStorage.setItem(review.user,review.comment);
+            for(let i=0; i<localStorage.length; i++){
+                var key = localStorage.key(i);
+                var value = localStorage.getItem(key);
+                output += `<img src=${review.image}></img><div><h1>${key}</h1> <li>${value}</li></div>`
+            }
         });
         review.innerHTML= output;
-        //Setting up loacl storage for the comment to be displayed each time the page refreshes
-        
-
-
+        //Setting up loacl storage for the comment to be displayed each time the page refreshes 
     },1000)
 }
 
@@ -307,15 +317,23 @@ function PostoComment(e){
     e.preventDefault()
     let cmtValue = cmtInp.value;
     return new Promise((resolve,reject)=>{
-        setTimeout(()=>{
-            comments.push({user:'user',comment:cmtValue,image:'pageimages/user.png'});
-            const error=false;
-            if(!error){
-                resolve();
-            }else{
-                reject('Error:in posting comment');
-            }
-        },2000)
+        if(!cmtValue){
+            window.alert('Type in a comment!!')
+            return;
+        }
+        else{
+            setTimeout(()=>{
+                comments.push({user:'user',comment:cmtValue,image:'pageimages/user.png'});
+                cmtInp.value="";
+                const error=false;
+                if(!error){
+                    resolve();
+                }else{
+                    reject('Error:in posting comment');
+                }
+            },2000)
+        }
+        
     }).then(postComment).catch(err=>{console.log(err)});
 } 
 

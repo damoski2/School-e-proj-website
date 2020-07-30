@@ -63,20 +63,16 @@ body{
 
 #list h1{
     position: relative;
-    top: 7em;
-    left: 5em;
+    top: 1em;
+    left: -1em;
 }
 
-#list p{
+.headingpara{
     position: relative;
-    top: 15em;
-    left: 7em;
+    top: 2em;
+    left: 0em;
     font-size: 19px;
     width: 600px;
-}
-
-#listpara{
-
 }
 
 /*form*/
@@ -91,6 +87,15 @@ body{
     width: 30%;
     border-radius: 10px;
     padding: 10px;
+    margin-left: 80%;
+    position: relative;
+    top: -10em;
+    height: 50vh;
+}
+
+#aForm fieldset{
+   margin-left: 20px;
+   margin-top: 10px;
 }
 
 #form input{
@@ -101,14 +106,16 @@ body{
     border-style: none;
     font-size: 17px;
     transition: .4s linear all;
-    margin-top: 10px;
+    margin-top: 140px;
+    margin-left: 30px;
 }
 /*discount*/
 
 #discount{
     position: absolute;
-    top: 22em;
-    left: 17em;
+    top: 40em;
+    left: 15em;
+    font-weight: bold;
 }
 
 #discount span{
@@ -119,13 +126,13 @@ body{
 #price{
     position: absolute;
     top: 42em;
-    left: 27em;
+    left: 14em;
 }
 
 /*demo section*/
 #demobtn{
     position: absolute;
-    top: 32em;
+    top: 42em;
     padding: 7px 10px;
     background-color: rgb(146, 67, 31);
     color: #ffe;
@@ -134,10 +141,14 @@ body{
     font-size: 17px;
     transition: .4s linear all;
     margin-top: 0px;
+    left: -7em;
 }
 
 #demosession{
+    margin-top: 260px;
+    margin-left: -100px;
     font-weight: bolder;
+    position: absolute;
 }
 
 /*footer*/
@@ -149,6 +160,7 @@ footer{
     text-align: center;
     color: #fff;
     padding: 10px 0;
+    padding-bottom: 10px;
 }
 
 #geolocation{
@@ -300,6 +312,10 @@ footer{
     width: 5%;
 }
 
+#reviewed p{
+    color: rgb(146, 64, 167);
+}
+
 /*submit service div*/
 .servicediv{
     background-color: #fff;
@@ -352,4 +368,31 @@ footer{
 
 .servicediv span{
     color: #000;
+}
+
+/*Social media links*/
+
+.footer a{
+    font-size: 30px;
+    padding: 0 20px;
+}
+
+.footer .fa-github{
+    color: white;
+}    
+
+.footer .fa-facebook{
+    color: rgb(46, 46, 160);
+}
+
+.footer .fa-youtube{
+    color: rgb(182, 15, 15);
+}
+
+.footer .fa-twitter{
+    color: #0f79aa;
+}
+
+.footer .fa-instagram{
+    color: rgb(204, 157, 26);
 }
