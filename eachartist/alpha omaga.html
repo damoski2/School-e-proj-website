@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>alpha omega</title>
+    <script src="https://kit.fontawesome.com/b9d108b29a.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed|Roboto+Slab&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <link rel="stylesheet" href="page.css">
+</head>
+<body>
+    <div id="container">
+        <div class="navbar navbar-expand-sm navbar-dark fixed-top">
+            <nav>
+                <h1>Find make up artist</h1>
+                    <div class="links">
+                        <a href="home.html">Home</a>
+                        <a href="artistpage.html">Artist page</a>
+                        <a>Contact us</a>
+                    </div>  
+            </nav>
+        </div>
+        <div id="list">
+            <div id="form">
+                <form name="submit" type="submit" id="aForm">
+                    <fieldset>
+                        <legend>Services</legend>
+                            <select id="select">
+                                <option value="Bridal makeup">Bridal makeup</option>
+                                <option value="Groom makeup">Groom makeup</option>
+                                <option value="Family Makeup">Family Makeup</option>
+                                <option value="Touch up services">Touch up services</option>
+                
+                            </select>
+                    </fieldset>
+                    <input type="submit" value="accept service" id="btn">
+                   
+                </form>
+      
+            </div>
+            <div id="discount">
+                <p>Discount :<span></span></p>
+            </div>
+            <div id="price">
+                <h4>Price : <span></span></h4>
+            </div>
+        </div>
+        <div id="identify">
+            <p>3</p>
+        </div>
+        <div id="geolocation">
+            <h1>Artist location: </h1>
+            <div id="map">
+
+            </div>
+        </div>
+
+    <div id="feedback">    
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" id="modalbtn">feedback</button>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Recipient:</label>
+                    <input type="text" class="form-control" id="recipient-name">
+                </div>
+                <div class="form-group">
+                    <label for="message-text" class="col-form-label">Message:</label>
+                    <textarea class="form-control" id="message-text"></textarea>
+                </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button id="close" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button id="sendfd" type="button" class="btn btn-primary">Send message</button>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <div id="works">
+        <div class="innerwidth">
+            <button>Show gallery</button>
+            <h1>Bisola works</h1>
+            <div class="border"></div>
+                <div class="gallery">
+                    <a class="image" href="#"><img src="pageimages/img8.jpg"></a>
+
+                    <a class="image" href="#"><img src="pageimages/img5.jpg"></a>
+
+                    <a class="image" href="#"><img src="pageimages/img3.jpg"></a>
+
+                    <a class="image" href="#"><img src="pageimages/img4.jpg"></a>
+
+                    <a class="image" href="#"><img src="pageimages/img2.jpg"></a>
+
+                    <a class="image" href="#"><img src="pageimages/img6.jpg"></a>
+
+                    <a class="image" href="#"><img src="pageimages/img7.jpg"></a>
+                    
+                    <a class="image" href="#"><img src="pageimages/img1.jpg"></a>
+                </div>
+
+        </div>
+    </div>
+    <!--REVIEW SECTION-->
+    <div class="reviews">
+        <div class="innerReview">
+            <h1>Comments & Reviews</h1>
+            <div id="clientRV">
+                <form>
+                    <label for="comment"></label><br><br>
+                    <input id="comment" type="text" placeholder="type in comment">
+                    <a href="#" id="sendreview"><i class="fa fa-send"></i></a> 
+                </form>
+            </div>
+            <div id="reviewed">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="footer">
+        <footer>
+           created @2020 - Oyindacodes
+
+        </footer>
+    </div>
+
+    <script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClTqyZ3rQVofkd7fEbXbzcTexOWZqrwEQ&callback=initMap">
+</script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+     
+    <script src="jquery.js"></script>
+    <script src="eachartist.js"></script>
+</body>
+</html>

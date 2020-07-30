@@ -1,4 +1,5 @@
 /*Global DOM selectors*/
+var cmtInp = document.getElementById("comment");
 var select = document.querySelector("select");
 var discount = document.querySelector("#discount span");
 var price = document.querySelector("#price span")
@@ -187,11 +188,14 @@ function initMap(){
 var db;
 $(document).ready(function(){
     $('#feedback #sendfd').click(createEntry);
+    $("#sendreview").click(commentDatabase);
     //loadSettings();
-            var shortName = 'makeup';
-            var version = '1.0';
-            var displayName = 'makeup';
-            var maxSize = 65536;
+
+        //Feedback database
+            let shortName = 'makeup';
+            let version = '1.0';
+            let displayName = 'makeup';
+            let maxSize = 65536;
             db = openDatabase(shortName, version, displayName, maxSize);
             db.transaction(
             function(transaction) {
@@ -204,6 +208,21 @@ $(document).ready(function(){
             }
             );
 
+        //Review database
+            let anotherName = 'review';
+            let ver = '1.0';
+            let showName = 'review';
+            let maximumSize = 65536;
+            db = openDatabase(anotherName,ver,showName,maximumSize);
+            db.transaction(
+                function(transaction){
+                    transaction.executeSql(
+                        'CREATE TABLE IF NOT EXISTS review'+
+                        '(id INT AUTOINCREMENT NOT NULL PRIMARY KEY, '+
+                        'comment CHAR NOT NULL);'
+                    );
+                }
+            );  
 });
 
  /*function sendfeedback(){
@@ -231,16 +250,26 @@ $(document).ready(function(){
             transaction.executeSql(
             'INSERT INTO interact (recipent,message) VALUES (?, ?);',
             [recipent, message],
-            function(){
-            //refreshEntries();
-            //jQT.goBack();
-            },
             errorHandler
             );
         }
     );
     return false;
    }
+
+
+ function commentDatabase(){
+    let comment = $("#comment").val();
+    db.transaction(
+        function(transaction){
+            transaction.executeSql(
+                'INSERT INTO review (comment) VALUES(?);',
+                [comment]
+            );
+        },
+    );
+    return false;
+}
 function errorHandler(transaction,error){
     alert('Oops . Error  was '+error.message+ ' (Code'+error.code+')');
     return true;
@@ -251,7 +280,6 @@ function errorHandler(transaction,error){
 /*Comment section functionality using Asyn js */
 var review = document.querySelector("#reviewed");
 var sendreview = document.querySelector("#sendreview");
-var cmtInp = document.getElementById("comment");
 var comments = [
     {user:'seaGirl_2',comment:'Very good services',image:'pageimages/user.png'},
     {user:'fashionstar',comment:'the best place to get your shit running',image:'pageimages/user.png'}
@@ -290,3 +318,4 @@ function PostoComment(e){
         },2000)
     }).then(postComment).catch(err=>{console.log(err)});
 } 
+

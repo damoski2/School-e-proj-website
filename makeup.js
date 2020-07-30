@@ -1,7 +1,7 @@
 var art =[
     {'id':1,'name':'bisola art','description':'best make up artist you can get inthe whole of ogun state','discount':100,'demossession':true,'url':'eachartist/bisola.html','image':'images/user.png'},
     {'id':2,'name':'shaloms delight','description':'for decades now shalom has been the best in town, immproving on our society beauty requirements,check out our works and contact us','discount':'No discount available','demossession':false,'url':'eachartist/shalom.html','image':'images/user.png'},
-    {'id':3,'name':'alpha omega','description':'from matte to face cleansing to all the make up you can thing of,alpha omega gats your beauty','discount':150,'demossession':true,'url':'eachartist/alpha.html','image':'images/user.png'}
+    {'id':3,'name':'alpha omega','description':'from matte to face cleansing to all the make up you can thing of,alpha omega gats your beauty','discount':150,'demossession':true,'url':'eachartist/alpha omaga.html','image':'images/user.png'}
 ]
  
  
