@@ -189,7 +189,6 @@ function initMap(){
 var db;
 $(document).ready(function(){
     $('#feedback #sendfd').click(createEntry);
-    $("#sendreview").click(commentDatabase);
     //loadSettings();
 
         //Feedback database
@@ -208,23 +207,6 @@ $(document).ready(function(){
                 );
             }
             );
-
-        //Review database
-            let anotherName = 'review';
-            let ver = '1.0';
-            let showName = 'review';
-            let maximumSize = 65536;
-            db = openDatabase(anotherName,ver,showName,maximumSize);
-            db.transaction(
-                function(transaction){
-                    transaction.executeSql(
-                        'CREATE TABLE IF NOT EXISTS review'+
-                        '(id INTEGER AUTOINCREMENT NOT NULL PRIMARY KEY, '+
-                        'comment CHAR NOT NULL,'+
-                        'template CHAR NOT NULL);'
-                    );
-                }
-            );  
 });
 
  /*function sendfeedback(){
@@ -245,13 +227,14 @@ $(document).ready(function(){
  }*/
 
  function createEntry() {
-    var recipent = $('#recipient-name').val();
-    var message = $('#message-text').val();
+     //e.preventDefault()
+    var recipent = document.getElementById("recipient-name").value;
+    var message = document.getElementById("message-text").value;
     db.transaction(
         function(transaction) {
             transaction.executeSql(
-            'INSERT INTO interact (recipent,message) VALUES (?, ?);',
-            [recipent, message],
+            'INSERT INTO interact (recipent,message) VALUES (?,?);',
+            [recipent,message],
             errorHandler
             );
         }
@@ -261,22 +244,6 @@ $(document).ready(function(){
 
    //Clear localStorage
    localStorage.clear();
-
-
- function commentDatabase(){
-    var comment = $("#comment").val();
-    var template = 'template';
-    db.transaction(
-        function(transaction){
-            transaction.executeSql(
-                'INSERT INTO review (comment,template) VALUES (?,?);',
-                [comment,template],
-                errorHandler
-            );
-        }
-    );
-    return false;
-}
 
 function errorHandler(transaction,error){
     alert('Oops . Error  was '+error.message+ ' (Code'+error.code+')');
